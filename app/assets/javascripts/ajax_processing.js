@@ -9,15 +9,17 @@ function getData(url) {
   $.ajax({
     type: "GET",    
     url: url,
-    contentType: 'text/html',
-    data: '{url: https://news.ycombinator.com/best}',
+    contentType: 'application/json',
+    data: 'url=https://news.ycombinator.com/best',
     dataType: 'json',
-    complete: function(data) {
-      console.log("data: ", data);
-      $('#content').html(data.responseText);
+    complete: function(data) {      
+      var doc = data.responseText;
+      var content = $(doc).find('table .itemlist');       
+      $('#content').html(content);
     },
     error: function(error) {
       console.log("error: ", error);
     }
   });
 }
+
