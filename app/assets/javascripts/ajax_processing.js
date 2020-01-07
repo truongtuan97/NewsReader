@@ -63,5 +63,9 @@ function processDisplayContent(titles, urls) {
     html_str +=   "</div>"
     html_str += "</div>"
   }
+
+  html_str   += "<div class='col-sm-12 more_button'>"
+  html_str   +=   "<sapn>More</span>"
+  html_str   += "<div>"
   return html_str;
 }
