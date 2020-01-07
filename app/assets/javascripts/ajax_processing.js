@@ -1,7 +1,9 @@
 $('document').ready(function() {
   if($('#content').length){
     console.log("element exists");
-    getData('http://localhost:3000/pages/getNews');
+    var url = $('#url_page_get_news').text();
+    console.log(url);
+    getData(url);
   }
 });
 
