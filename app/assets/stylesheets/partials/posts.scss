@@ -44,12 +44,22 @@
 
 .wrapper_content {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: 100%;  
   padding: 50px 50px;
+}
+
+#content{
+  display: block;
+  max-height: 700px;
+  width: 100%;
+  overflow-y: auto;
 }
 
 .more_button {
   margin-top: 50px;
-  margin-bottom: 50px;
+  display: block;
+  height: 50px;  
+  &:hover {
+    cursor: pointer;    
+  }
 }

@@ -1,18 +1,25 @@
 $('document').ready(function() {
   if($('#content').length){
-    console.log("element exists");
-    var url = $('#url_page_get_news').text();
-    console.log(url);
-    getData(url);
+    var url = $('#url_page_get_news').text();    
+    getData(url, 'https://news.ycombinator.com/best');
   }
 });
 
-function getData(url) {
+function loadMore(sender){
+  var index = $(sender).attr('page');
+  var url = $('#url_page_get_news').text();    
+
+  index = parseInt(index) + 1;
+  $(sender).attr('page', index);
+  getData(url, 'https://news.ycombinator.com/best?p=' + index);
+}
+
+function getData(url, pageUrl) {
   $.ajax({
     type: "GET",    
     url: url,
     contentType: 'application/json',
-    data: 'url=https://news.ycombinator.com/best',
+    data: 'url=' + pageUrl,
     dataType: 'json',
     complete: function(data) {      
       var doc = data.responseText;
@@ -64,8 +71,5 @@ function processDisplayContent(titles, urls) {
     html_str += "</div>"
   }
 
-  html_str   += "<div class='col-sm-12 more_button'>"
-  html_str   +=   "<sapn>More</span>"
-  html_str   += "<div>"
   return html_str;
 }

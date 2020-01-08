@@ -85,4 +85,10 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
+
+  config.action_controller.perform_caching = true
+  config.cache_store = :memory_store
+  config.public_file_server.header = {
+    'Cache-Control' => "public, max-age=#{1.days.seconds.to_i}"
+  }
 end
