@@ -1,10 +1,17 @@
 <span style="display:none" id="url_page_get_news">
   <%= url_for(only_path: false) + pages_getNews_path %>
 </span>
+<span style="display:none" id="url_page_detail">
+  <%= pages_show_path %>
+</span>
+
+<div id="data" style="display:none;">
+  <%= raw(@source) %>
+</div>
+
 <div class="wrapper_content">
   <div id="content"></div>
-  <div class='more_button'>
+  <div class='more_button' style="display:none;">
     <span onclick="loadMore(this);" page="0">More</span>
   <div>
 </div>
-
